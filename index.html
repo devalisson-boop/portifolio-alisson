@@ -5,14 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Alisson da Rocha Trindade | Portfólio</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <!-- FontAwesome CDN padrão para ícones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-  <!-- tsParticles -->
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
-  <!-- GSAP -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <!-- VanillaTilt -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.2/vanilla-tilt.min.js"></script>
   <style>
     :root {
       --primary: #00ffe7;
@@ -33,9 +26,7 @@
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
-    body {
-      position: relative;
-    }
+    body { position: relative; }
     #tsparticles {
       position: fixed;
       z-index: 0;
@@ -44,6 +35,8 @@
       left: 0; top: 0;
       pointer-events: none;
     }
+
+    /* HEADER & NAV */
     header {
       width: 100%;
       padding: 2rem 0 1rem 0;
@@ -68,6 +61,7 @@
       border-radius: 16px;
       box-shadow: 0 2px 24px #00ffe722;
       backdrop-filter: blur(6px);
+      align-items: center;
     }
     nav a {
       color: var(--text);
@@ -78,6 +72,7 @@
       letter-spacing: 0.12em;
       position: relative;
       transition: color 0.3s;
+      padding: 0.5rem 0.2rem;
     }
     nav a::before {
       content: '';
@@ -91,12 +86,25 @@
       position: absolute;
       bottom: -4px; left: 0; right: 0;
     }
-    nav a:hover, nav a.active {
-      color: var(--primary);
+    nav a:hover, nav a.active { color: var(--primary);}
+    nav a:hover::before, nav a.active::before { width: 100%; }
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      margin-left: 1.5rem;
     }
-    nav a:hover::before, nav a.active::before {
-      width: 100%;
+    .nav-toggle span {
+      display: block;
+      width: 26px;
+      height: 3px;
+      background: var(--primary);
+      border-radius: 2px;
+      transition: 0.3s;
     }
+
+    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -163,6 +171,7 @@
       transform: scale(1.12) rotate(-5deg);
     }
 
+    /* SKILLS */
     .skills {
       padding: 7rem 2rem 3rem 2rem;
       background: transparent;
@@ -228,7 +237,6 @@
       font-family: 'Poppins', Arial, sans-serif;
       word-break: break-word;
     }
-    /* Tooltip */
     .skill-card .tooltip {
       visibility: hidden;
       opacity: 0;
@@ -264,6 +272,7 @@
       border-color: #191d2a transparent transparent transparent;
     }
 
+    /* PROJECTS */
     section.projects {
       padding: 7rem 2rem 3rem 2rem;
       min-height: 60vh;
@@ -359,6 +368,7 @@
       margin-bottom: 1.1rem;
       width: 100%;
     }
+    .project-desc ul { margin-left: 1.2em; }
     .project-links {
       display: flex;
       gap: 1.3rem;
@@ -379,6 +389,8 @@
       background: var(--primary);
       color: #091016;
     }
+
+    /* ABOUT */
     section.about {
       background: var(--secondary);
       min-height: 45vh;
@@ -407,6 +419,74 @@
       font-family: 'Orbitron', Arial, sans-serif;
       font-weight: 700;
     }
+
+    /* CONTACT */
+    section.contact {
+      background: var(--secondary);
+      padding: 5rem 2rem 3rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .contact-title {
+      font-size: 2rem;
+      color: var(--primary);
+      font-family: 'Orbitron', Arial, sans-serif;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.04em;
+      text-shadow: 0 4px 24px #00ffe71e;
+      text-align: center;
+    }
+
+    .contact-content {
+      background: var(--glass);
+      padding: 2.5rem 2rem;
+      border-radius: 18px;
+      box-shadow: 0 2px 18px #00ffe71a;
+      text-align: center;
+      max-width: 425px;
+    }
+
+    .contact-content p {
+      color: var(--muted);
+      font-size: 1.13rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .contact-content li {
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-content a {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.08rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.24s;
+    }
+
+    .contact-content a:hover {
+      color: var(--accent);
+      text-decoration: underline;
+    }
+
+    .contact-content i {
+      font-size: 1.3rem;
+    }
+
+    /* FOOTER */
     footer {
       background: var(--bg);
       color: var(--muted);
@@ -418,6 +498,8 @@
       position: relative;
       box-shadow: 0 -2px 22px #00ffe706;
     }
+
+    /* RESPONSIVE */
     @media (max-width: 1100px) {
       .projects-grid { gap: 1.2rem; }
       .project-card { width: 320px; }
@@ -426,9 +508,33 @@
       .about-content { padding: 1.5rem; }
       .hero h1 { font-size: 2.1rem;}
     }
+    @media (max-width: 900px) {
+      nav { gap: 1.1rem; padding: 0.6rem 1.1rem; }
+      .project-card { width: 98vw; max-width: 360px; }
+      .skills-grid { gap: 1rem; }
+    }
     @media (max-width: 700px) {
       .projects-grid, .skills-grid { flex-direction: column; align-items: center; }
       .project-card { width: 98vw; max-width: 360px; min-height: 330px;}
+      nav {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0.7rem 0.8rem;
+      }
+      .nav-toggle { display: flex;}
+      nav.responsive {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--glass);
+        border-radius: 0 0 16px 16px;
+        box-shadow: 0 2px 24px #00ffe722;
+        z-index: 100;
+        gap: 1.5rem;
+      }
     }
     @media (max-width: 600px) {
       .hero h1 { font-size: 1.2rem;}
@@ -436,101 +542,30 @@
       .skills h2, .about-content h2, .projects-title { font-size: 1.1rem;}
       .skills-grid { gap: 1.1rem;}
       .skill-card { width: 100px; height: 100px;}
-      section.skills, section.about { padding: 2rem 0.4rem;}
+      section.skills, section.about, section.contact { padding: 2rem 0.4rem;}
       .about-content { font-size: 0.99rem;}
       .socials a { font-size: 1.4rem; }
       .projects-grid { gap: 0.7rem; }
+      .contact-content { padding: 1rem 0.3rem; }
     }
-    ::-webkit-scrollbar {
-      width: 8px;
-      background: var(--secondary);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--bg);
-      border-radius: 4px;
-    }
-
-
-    /* Adicione ao final do seu styles.css */
-
-section.contact {
-  background: var(--secondary);
-  padding: 5rem 2rem 3rem 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.contact-title {
-  font-size: 2rem;
-  color: var(--primary);
-  font-family: 'Orbitron', Arial, sans-serif;
-  font-weight: 700;
-  margin-bottom: 1.2rem;
-  letter-spacing: 0.04em;
-  text-shadow: 0 4px 24px #00ffe71e;
-  text-align: center;
-}
-
-.contact-content {
-  background: var(--glass);
-  padding: 2.5rem 2rem;
-  border-radius: 18px;
-  box-shadow: 0 2px 18px #00ffe71a;
-  text-align: center;
-  max-width: 425px;
-}
-
-.contact-content p {
-  color: var(--muted);
-  font-size: 1.13rem;
-  margin-bottom: 2rem;
-}
-
-.contact-content ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.contact-content li {
-  margin-bottom: 1.2rem;
-}
-
-.contact-content a {
-  color: var(--primary);
-  font-weight: 600;
-  font-size: 1.08rem;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: color 0.24s;
-}
-
-.contact-content a:hover {
-  color: var(--accent);
-  text-decoration: underline;
-}
-
-.contact-content i {
-  font-size: 1.3rem;
-}
+    ::-webkit-scrollbar { width: 8px; background: var(--secondary);}
+    ::-webkit-scrollbar-thumb { background: var(--bg); border-radius: 4px;}
   </style>
 </head>
 <body>
   <div id="tsparticles"></div>
   <header>
-    <nav>
+    <nav id="mainnav">
       <a href="#inicio" class="active">Início</a>
       <a href="#skills">Habilidades</a>
       <a href="#projetos">Projetos</a>
       <a href="#sobre">Sobre</a>
       <a href="#contato">Contato</a>
+      <div class="nav-toggle" id="nav-toggle" tabindex="0" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </div>
     </nav>
   </header>
-
   <main>
     <section class="hero" id="inicio">
       <h1>Alisson da Rocha Trindade</h1>
@@ -540,14 +575,16 @@ section.contact {
         Olá! Sou um desenvolvedor web apaixonado por tecnologia, formado em Técnico de Informática pelo <b>Instituto Federal do Piauí</b>. Aos 19 anos, já atuei em diversos projetos, desenvolvendo soluções inovadoras com <b>Python</b>, <b>JavaScript</b>, <b>Node.js</b>, <b>HTML/CSS</b>, <b>MySQL</b> e mais. Sempre buscando evolução, criatividade e excelência!
       </p>
       <div class="socials">
-        <a href="https://github.com/seu-usuario" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/in/seu-usuario" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/devalisson-boop" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/alisson-da-rocha-trindade-754219368/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
     </section>
 
     <section class="skills" id="skills">
       <h2>Habilidades</h2>
       <div class="skills-grid">
+        <!-- Coloque seus skill-cards aqui, conforme exemplo anterior -->
+        <!-- ... skills ... -->
         <div class="skill-card" style="--skillcolor:#306998;">
           <div class="skill-icon"><i class="fab fa-python"></i></div>
           <div class="tooltip">Linguagem poderosa e versátil para web, scripts, automação, ciência de dados e IA.</div>
@@ -652,31 +689,28 @@ section.contact {
           <div class="project-desc">Dashboard responsivo com gráficos interativos, autenticação e integração em tempo real usando React, Node e Chart.js.</div>
           <div class="project-links">
             <a href="https://github.com/devalisson-boop/dashboard-analytics" target="_blank"><i class="fab fa-github"></i> Código</a>
-           
           </div>
-
-  
-   <div class="project-card" data-tilt data-tilt-max="16" data-tilt-speed="600">
-  <div class="project-image">
-    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
-         alt="Automação Workflows Java">
-  </div>
-  <div class="project-title">Automação de Workflows Inteligentes</div>
-  <div class="project-desc">
-    Aplicação web desenvolvida em <b>Java (Spring Boot + Thymeleaf)</b> que permite ao usuário criar, configurar e agendar workflows para automatizar tarefas do dia a dia, como:<br>
-    <ul style="text-align:left; margin: 12px 0 0 18px;">
-      <li>Disparar e-mails automáticos (ex: lembretes, aniversários);</li>
-      <li>Extrair dados de APIs (clima, dólar) e gerar relatórios com agendamento;</li>
-      <li>Movimentar/organizar arquivos entre pastas (ex: backup automático para nuvem);</li>
-      <li>Enviar notificações via WhatsApp, Telegram ou SMS de acordo com regras;</li>
-    </ul>
-    <span style="display:block; margin-top:10px;">Configuração visual dos fluxos, logs e dashboard de execuções.</span>
-  </div>
-  <div class="project-links">
-    <a href="https://github.com/devalisson-boop/projetoemjava/tree/main" target="_blank"><i class="fab fa-github"></i> Código</a>
-   
-  </div>
-</div>
+        </div>
+        <div class="project-card" data-tilt data-tilt-max="16" data-tilt-speed="600">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=600&q=80"
+                 alt="Automação Workflows Java">
+          </div>
+          <div class="project-title">Automação de Workflows Inteligentes</div>
+          <div class="project-desc">
+            Aplicação web desenvolvida em <b>Java (Spring Boot + Thymeleaf)</b> que permite ao usuário criar, configurar e agendar workflows para automatizar tarefas do dia a dia, como:<br>
+            <ul style="text-align:left; margin: 12px 0 0 18px;">
+              <li>Disparar e-mails automáticos (ex: lembretes, aniversários);</li>
+              <li>Extrair dados de APIs (clima, dólar) e gerar relatórios com agendamento;</li>
+              <li>Movimentar/organizar arquivos entre pastas (ex: backup automático para nuvem);</li>
+              <li>Enviar notificações via WhatsApp, Telegram ou SMS de acordo com regras;</li>
+            </ul>
+            <span style="display:block; margin-top:10px;">Configuração visual dos fluxos, logs e dashboard de execuções.</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/devalisson-boop/projetoemjava/tree/main" target="_blank"><i class="fab fa-github"></i> Código</a>
+          </div>
+        </div>
         <div class="project-card" data-tilt data-tilt-max="16" data-tilt-speed="600">
           <div class="project-image">
             <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Projeto 3">
@@ -688,7 +722,6 @@ section.contact {
             <a href="https://devalisson-boop.github.io/meu-site-futurista/" target="_blank"><i class="fas fa-external-link-alt"></i> Demo</a>
           </div>
         </div>
-        <!-- NOVO PROJETO: Site de Jogos -->
         <div class="project-card" data-tilt data-tilt-max="16" data-tilt-speed="600">
           <div class="project-image">
             <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80" alt="Site de Jogos">
@@ -712,9 +745,7 @@ section.contact {
         <b>Vamos construir o futuro juntos?</b>
       </div>
     </section>
-  </main>
-
-  <section class="contact" id="contato">
+    <section class="contact" id="contato">
       <div class="contact-title">Contato</div>
       <div class="contact-content">
         <p>Entre em contato comigo através dos canais abaixo:</p>
@@ -732,17 +763,30 @@ section.contact {
         </ul>
       </div>
     </section>
-
-
-
-
-
-
-  <footer id="contato">
-    © <span id="ano"></span> Alisson da Rocha Trindade. 
+  </main>
+  <footer>
+    © <span id="ano"></span> Alisson da Rocha Trindade.
   </footer>
-
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.2/vanilla-tilt.min.js"></script>
   <script>
+    // Menu hamburguer responsivo
+    const navToggle = document.getElementById('nav-toggle');
+    const nav = document.getElementById('mainnav');
+    navToggle.addEventListener('click', () => {
+      nav.classList.toggle('responsive');
+    });
+    navToggle.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') nav.classList.toggle('responsive');
+    });
+    // Fecha o menu ao clicar em um link (mobile)
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', function() {
+        nav.classList.remove('responsive');
+      });
+    });
+
     // Partículas animadas (tsParticles)
     tsParticles.load("tsparticles", {
       fullScreen: { enable: false },
@@ -816,7 +860,7 @@ section.contact {
       gsap.from(".bar", { scaleX: 0, opacity: 0, duration: 1, delay: 0.6, transformOrigin: "left", ease: "power3.out" });
       gsap.from(".hero p", { y: 30, opacity: 0, duration: 1, delay: 0.7, ease: "power3.out" });
       gsap.from(".socials a", { scale: 0, opacity: 0, stagger: 0.14, duration: 0.7, delay: 0.85, ease: "back.out(1.7)" });
-      gsap.from(".about-content", { y: 120, opacity: 0, duration: 1, scrollTrigger: { trigger: ".about-content" }, delay: 0.6 });
+      gsap.from(".about-content", { y: 120, opacity: 0, duration: 1, delay: 0.6 });
     });
 
     // Scroll header efeito glass
@@ -841,7 +885,7 @@ section.contact {
       });
     });
     // Highlight menu conforme seções
-    const sections = ["#inicio", "#skills", "#projetos", "#sobre"];
+    const sections = ["#inicio", "#skills", "#projetos", "#sobre", "#contato"];
     window.addEventListener('scroll', () => {
       let scrollY = window.scrollY;
       let found = false;
