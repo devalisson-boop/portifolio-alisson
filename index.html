@@ -17,7 +17,7 @@
       --glass: rgba(26,35,54,0.73);
       --project-glass: rgba(30,38,60,0.85);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body {
       min-height: 100%;
       background: var(--bg);
@@ -35,8 +35,6 @@
       left: 0; top: 0;
       pointer-events: none;
     }
-
-    /* HEADER & NAV */
     header {
       width: 100vw;
       padding: 1rem 0 0.5rem 0;
@@ -66,6 +64,11 @@
       position: relative;
       z-index: 200;
     }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+    }
     nav a {
       color: var(--text);
       font-weight: 700;
@@ -93,8 +96,6 @@
     }
     nav a:hover, nav a.active { color: var(--primary);}
     nav a:hover::before, nav a.active::before { width: 100%; }
-
-    /* Hamburger menu */
     .nav-toggle {
       display: none;
       flex-direction: column;
@@ -118,10 +119,8 @@
       transition: 0.3s;
     }
     @media (max-width: 900px) {
-      nav {
-        gap: 1.1rem;
-        padding: 0.6rem 1.1rem;
-      }
+      nav { gap: 1.1rem; padding: 0.6rem 1.1rem; }
+      .nav-links { gap: 1.1rem; }
     }
     @media (max-width: 700px) {
       nav {
@@ -138,7 +137,7 @@
         top: 9px;
         right: 10px;
       }
-      nav .nav-links {
+      .nav-links {
         display: none;
         flex-direction: column;
         width: 100%;
@@ -155,7 +154,7 @@
       nav.open .nav-links {
         display: flex;
       }
-      nav .nav-links a {
+      .nav-links a {
         padding: 0.8rem 0;
         width: 100%;
       }
@@ -163,8 +162,6 @@
     @media (max-width: 400px) {
       nav { min-width: 120px; }
     }
-
-    /* HERO */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -224,6 +221,7 @@
       gap: 2.5rem;
       justify-content: center;
       margin-top: 1.5rem;
+      flex-wrap: wrap;
     }
     .socials a {
       color: var(--primary);
@@ -235,8 +233,6 @@
       color: var(--accent);
       transform: scale(1.12) rotate(-5deg);
     }
-
-    /* SKILLS */
     .skills {
       padding: 7rem 2rem 3rem 2rem;
       background: transparent;
@@ -261,7 +257,7 @@
       flex-wrap: wrap;
       gap: 2rem;
       justify-content: center;
-      align-items: center;
+      align-items: stretch;
       margin-top: 2.5rem;
       width: 100%;
       box-sizing: border-box;
@@ -270,46 +266,51 @@
       background: var(--glass);
       border-radius: 1.5rem;
       box-shadow: 0 4px 18px #0003, 0 1px 12px #00ffe722;
-      width: 130px;
-      height: 170px;
+      width: 210px;
+      min-height: 120px;
+      max-width: 250px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      gap: 1.1rem;
+      justify-content: flex-start;
+      gap: 0.5rem;
       transition: transform 0.22s cubic-bezier(.86,.01,.36,.99), box-shadow 0.22s;
       will-change: transform, box-shadow, opacity;
       cursor: pointer;
       position: relative;
       border: 2px solid var(--skillcolor, #00ffe7);
+      padding: 1rem 0.5rem;
+      text-align: center;
+      margin-bottom: 0.6rem;
     }
     .skill-card:hover {
       transform: translateY(-10px) scale(1.08) rotate(-2deg);
       box-shadow: 0 8px 32px var(--skillcolor, #00ffe7);
     }
     .skill-icon {
-      font-size: 3.6rem;
+      font-size: 2.1rem;
       color: var(--skillcolor, #00ffe7);
       filter: drop-shadow(0 0 8px var(--skillcolor, #00ffe7)55);
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.18rem;
       transition: color 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
     }
     .skill-name {
-      font-size: 1.03rem;
+      font-size: 1.06rem;
       font-weight: 700;
       color: var(--text);
       text-align: center;
       letter-spacing: 0.01em;
       font-family: 'Poppins', Arial, sans-serif;
       word-break: break-word;
+      margin-bottom: 0.3rem;
     }
     .skill-card .tooltip {
       visibility: hidden;
       opacity: 0;
-      width: 180px;
+      width: 215px;
       background: #191d2a;
       color: #fff;
       text-align: center;
@@ -340,8 +341,6 @@
       border-style: solid;
       border-color: #191d2a transparent transparent transparent;
     }
-
-    /* PROJECTS */
     section.projects {
       padding: 7rem 2rem 3rem 2rem;
       min-height: 60vh;
@@ -383,7 +382,7 @@
       justify-content: flex-start;
       gap: 1.1rem;
       padding: 2.3rem 1.6rem 2rem 1.6rem;
-      transition: 
+      transition:
         transform 0.23s cubic-bezier(.86,.01,.36,.99),
         box-shadow 0.23s;
       opacity: 0;
@@ -398,7 +397,7 @@
     .project-card.visible {
       opacity: 1;
       transform: translateY(0) scale(1) rotateX(0deg);
-      transition: 
+      transition:
         opacity 0.85s cubic-bezier(.86,.01,.36,.99),
         transform 0.72s cubic-bezier(.86,.01,.36,.99);
     }
@@ -491,8 +490,6 @@
       background: var(--primary);
       color: #091016;
     }
-
-    /* ABOUT */
     section.about {
       background: var(--secondary);
       min-height: 45vh;
@@ -524,8 +521,6 @@
       font-family: 'Orbitron', Arial, sans-serif;
       font-weight: 700;
     }
-
-    /* CONTACT */
     section.contact {
       background: var(--secondary);
       padding: 5rem 2rem 3rem 2rem;
@@ -586,8 +581,6 @@
     .contact-content i {
       font-size: 1.3rem;
     }
-
-    /* FOOTER */
     footer {
       background: var(--bg);
       color: var(--muted);
@@ -601,9 +594,11 @@
       width: 100vw;
       box-sizing: border-box;
     }
-
-    /* RESPONSIVE */
+    ::-webkit-scrollbar { width: 8px; background: var(--secondary);}
+    ::-webkit-scrollbar-thumb { background: var(--bg); border-radius: 4px;}
     @media (max-width: 1100px) {
+      .skills-grid { gap: 1.2rem; }
+      .skill-card { width: 180px; }
       .projects-grid { gap: 1.2rem; }
       .about-content { padding: 1.5rem; }
       .hero h1 { font-size: 2.1rem;}
@@ -643,23 +638,37 @@
       .projects-grid { gap: 0.7rem; }
       .contact-content { padding: 1rem 0.3rem; }
     }
-    ::-webkit-scrollbar { width: 8px; background: var(--secondary);}
-    ::-webkit-scrollbar-thumb { background: var(--bg); border-radius: 4px;}
+    @media (max-width: 440px) {
+      .hero, .skills, .projects, .about, .contact, footer {
+        padding-left: 0.2rem;
+        padding-right: 0.2rem;
+      }
+      .about-content { padding: 0.7rem; font-size: 0.94rem;}
+      .contact-content { padding: 0.4rem; }
+    }
+    @media (max-width: 360px) {
+      .hero h1 { font-size: 0.99rem; }
+      .hero h2 { font-size: 0.88rem; }
+      .skill-card { width: 80px; height: 80px; font-size: 0.93rem;}
+      .about-content { font-size: 0.88rem;}
+      .contact-content { font-size: 0.89rem;}
+      .project-card { padding: 1.3rem 0.5rem; }
+    }
   </style>
 </head>
 <body>
-  <div id="tsparticles"></div>
+  <div id="tsparticles" aria-hidden="true"></div>
   <header>
-    <nav id="mainnav">
-      <div class="nav-toggle" id="nav-toggle" tabindex="0" aria-label="Abrir menu">
+    <nav id="mainnav" aria-label="Navegação principal">
+      <button class="nav-toggle" id="nav-toggle" tabindex="0" aria-label="Abrir menu" aria-controls="menu-links" aria-expanded="false">
         <span></span><span></span><span></span>
-      </div>
-      <div class="nav-links">
-        <a href="#inicio" class="active">Início</a>
-        <a href="#skills">Habilidades</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#sobre">Sobre</a>
-        <a href="#contato">Contato</a>
+      </button>
+      <div class="nav-links" id="menu-links" role="menu">
+        <a href="#inicio" class="active" role="menuitem">Início</a>
+        <a href="#skills" role="menuitem">Habilidades</a>
+        <a href="#projetos" role="menuitem">Projetos</a>
+        <a href="#sobre" role="menuitem">Sobre</a>
+        <a href="#contato" role="menuitem">Contato</a>
       </div>
     </nav>
   </header>
@@ -667,28 +676,51 @@
     <section class="hero" id="inicio">
       <h1>Alisson da Rocha Trindade</h1>
       <h2>Desenvolvedor Web &bull; 4 anos de experiência</h2>
-      <div class="bar"></div>
+      <div class="bar" aria-hidden="true"></div>
       <p>
         Olá! Sou um desenvolvedor web apaixonado por tecnologia, formado em Técnico de Informática pelo <b>Instituto Federal do Piauí</b>. Aos 19 anos, já atuei em diversos projetos, desenvolvendo soluções inovadoras com <b>Python</b>, <b>JavaScript</b>, <b>Node.js</b>, <b>HTML/CSS</b>, <b>MySQL</b> e mais. Sempre buscando evolução, criatividade e excelência!
       </p>
-      <div class="socials">
+      <div class="socials" aria-label="Redes sociais">
         <a href="https://github.com/devalisson-boop" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
         <a href="https://linkedin.com/in/alisson-da-rocha-trindade-754219368/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
       </div>
-    </section>
     <section class="skills" id="skills">
       <h2>Habilidades</h2>
       <div class="skills-grid">
-        <!-- (skills conforme exemplos anteriores) -->
-        <!-- ... -->
+        <div class="skill-card" style="--skillcolor:#9b59b6"><div class="skill-icon"><i class="fas fa-brain"></i></div><div class="skill-name">Lógica de Programação Avançada</div><div class="tooltip">Sólida base em algoritmos e estruturas de dados, com foco em resolução de problemas complexos.</div></div>
+        <div class="skill-card" style="--skillcolor:#b07219"><div class="skill-icon"><i class="fab fa-java"></i></div><div class="skill-name">Desenvolvimento com Java</div><div class="tooltip">Experiência com orientação a objetos, tratamento de exceções e manipulação de arquivos. Domínio em criação de aplicações robustas.</div></div>
+        <div class="skill-card" style="--skillcolor:#3776AB"><div class="skill-icon"><i class="fab fa-python"></i></div><div class="skill-name">Desenvolvimento com Python</div><div class="tooltip">Experiência com orientação a objetos, tratamento de exceções e manipulação de arquivos. Domínio em criação de aplicações robustas.</div></div>
+        <div class="skill-card" style="--skillcolor:#e44e27"><div class="skill-icon"><i class="fas fa-network-wired"></i></div><div class="skill-name">APIs RESTful</div><div class="tooltip">Criação e consumo de APIs com autenticação, tratamento de requisições e integração entre sistemas.</div></div>
+        <div class="skill-card" style="--skillcolor:#2980b9"><div class="skill-icon"><i class="fas fa-database"></i></div><div class="skill-name">Banco de Dados Relacionais</div><div class="tooltip">Prática com MySQL e SQL Server: modelagem de dados, queries complexas, procedures e triggers.</div></div>
+        <div class="skill-card" style="--skillcolor:#e34c26"><div class="skill-icon"><i class="fab fa-html5"></i></div><div class="skill-name">HTML5</div><div class="tooltip">Front-end: HTML5 para estruturação semântica, acessibilidade e SEO.</div></div>
+        <div class="skill-card" style="--skillcolor:#264de4"><div class="skill-icon"><i class="fab fa-css3-alt"></i></div><div class="skill-name">CSS3</div><div class="tooltip">Front-end: CSS3 para design responsivo, Flexbox, Grid e animações.</div></div>
+        <div class="skill-card" style="--skillcolor:#f7df1e"><div class="skill-icon"><i class="fab fa-js-square"></i></div><div class="skill-name">JavaScript (Avançado)</div><div class="tooltip">Front-end: JavaScript avançado ES6+, DOM, frameworks modernos.</div></div>
+        <div class="skill-card" style="--skillcolor:#61dafb"><div class="skill-icon"><i class="fab fa-react"></i></div><div class="skill-name">React</div><div class="tooltip">Front-end: componentização, hooks e SPA.</div></div>
+        <div class="skill-card" style="--skillcolor:#42b883"><div class="skill-icon"><i class="fab fa-vuejs"></i></div><div class="skill-name">Vue.js</div><div class="tooltip">Front-end: interfaces reativas e SPA modernas.</div></div>
+        <div class="skill-card" style="--skillcolor:#dd0031"><div class="skill-icon"><i class="fab fa-angular"></i></div><div class="skill-name">Angular</div><div class="tooltip">Front-end: arquitetura modular, RxJS e TypeScript.</div></div>
+        <div class="skill-card" style="--skillcolor:#3c873a"><div class="skill-icon"><i class="fab fa-node"></i></div><div class="skill-name">Node.js</div><div class="tooltip">Back-end: APIs escaláveis, Express, integração, autenticação e autorização.</div></div>
+        <div class="skill-card" style="--skillcolor:#636e72"><div class="skill-icon"><i class="fas fa-server"></i></div><div class="skill-name">Back-end</div><div class="tooltip">Fundamentos de back-end, integração com front-end, rotas, autenticação e autorização.</div></div>
+        <div class="skill-card" style="--skillcolor:#f1502f"><div class="skill-icon"><i class="fab fa-git-alt"></i></div><div class="skill-name">Git</div><div class="tooltip">Versionamento: branches, merges, GitHub/GitLab, resolução de conflitos.</div></div>
+        <div class="skill-card" style="--skillcolor:#2ecc71"><div class="skill-icon"><i class="fas fa-shield-alt"></i></div><div class="skill-name">Segurança da Informação</div><div class="tooltip">Criptografia, autenticação, HTTPS, firewall, prevenção de SQL Injection, XSS e CSRF.</div></div>
+        <div class="skill-card" style="--skillcolor:#2496ed"><div class="skill-icon"><i class="fab fa-docker"></i></div><div class="skill-name">DevOps (Noções)</div><div class="tooltip">Integração contínua, automação de testes e deploys, containers Docker.</div></div>
+        <div class="skill-card" style="--skillcolor:#e67e22"><div class="skill-icon"><i class="fas fa-vial"></i></div><div class="skill-name">Testes de Software</div><div class="tooltip">Execução de testes unitários e automatizados utilizando JUnit e PyTest.</div></div>
+        <div class="skill-card" style="--skillcolor:#8395a7"><div class="skill-icon"><i class="fas fa-file-alt"></i></div><div class="skill-name">Documentação Técnica</div><div class="tooltip">Clareza na produção de manuais, instruções e comentários no código.</div></div>
+        <div class="skill-card" style="--skillcolor:#292d3e"><div class="skill-icon"><i class="fab fa-linux"></i></div><div class="skill-name">Sistemas Operacionais</div><div class="tooltip">Experiência com Linux e Windows para desenvolvimento e deploy.</div></div>
+        <div class="skill-card" style="--skillcolor:#1abc9c"><div class="skill-icon"><i class="fas fa-laptop"></i></div><div class="skill-name">Ferramentas de Produtividade</div><div class="tooltip">Domínio do pacote Office (Word, Excel, PowerPoint) com foco em relatórios e apresentações técnicas.</div></div>
+        <div class="skill-card" style="--skillcolor:#00b894"><div class="skill-icon"><i class="fas fa-users"></i></div><div class="skill-name">Habilidades Interpessoais e Organizacionais</div><div class="tooltip">Resolução de problemas, troubleshooting, equipes ágeis (Scrum/Kanban), comunicação clara, organização, gestão de tempo e aprendizado contínuo.</div></div>
+        <div class="skill-card" style="--skillcolor:#5e72e4"><div class="skill-icon"><i class="fas fa-cloud"></i></div><div class="skill-name">Cloud Computing (Noções)</div><div class="tooltip">Noções de AWS, Azure, Google Cloud, automação de tarefas e deploys em nuvem.</div></div>
+        <div class="skill-card" style="--skillcolor:#636e72"><div class="skill-icon"><i class="fas fa-terminal"></i></div><div class="skill-name">Automação & Scripts</div><div class="tooltip">Automação de tarefas e desenvolvimento de scripts.</div></div>
+        <div class="skill-card" style="--skillcolor:#fdcb6e"><div class="skill-icon"><i class="fas fa-pencil-ruler"></i></div><div class="skill-name">UX/UI Design & Figma</div><div class="tooltip">Princípios de UX/UI Design e prototipação com Figma.</div></div>
+        <div class="skill-card" style="--skillcolor:#16a085"><div class="skill-icon"><i class="fas fa-cubes"></i></div><div class="skill-name">Containers & Docker</div><div class="tooltip">Conceitos básicos de containers e automação de deploys.</div></div>
+        <div class="skill-card" style="--skillcolor:#fd79a8"><div class="skill-icon"><i class="fas fa-lightbulb"></i></div><div class="skill-name">Projetos, Hackathons e Open Source</div><div class="tooltip">Participação em hackathons, eventos de tecnologia, comunidades técnicas e projetos open-source.</div></div>
       </div>
     </section>
-    <section class="projects" id="projetos">
+   <section class="projects" id="projetos">
       <div class="projects-title">Projetos</div>
       <div class="projects-grid">
         <div class="project-card" data-tilt>
           <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Projeto 1">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80" alt="Dashboard Analytics">
           </div>
           <div class="project-title">Dashboard Analytics</div>
           <div class="project-desc" data-full="Dashboard responsivo com gráficos interativos, autenticação e integração em tempo real usando React, Node e Chart.js. Permite analisar dados de forma intuitiva, gerando relatórios e acompanhando métricas em tempo real.">
@@ -717,7 +749,7 @@
         </div>
         <div class="project-card" data-tilt>
           <div class="project-image">
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Projeto 3">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Landing Page Criativa">
           </div>
           <div class="project-title">Landing Page Criativa</div>
           <div class="project-desc" data-full="Landing page animada, mobile-first, com formulário de contato, efeitos visuais e SEO otimizado. Ideal para apresentação de produtos ou serviços com visual moderno e comunicação eficiente.">
@@ -780,35 +812,38 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.2/vanilla-tilt.min.js"></script>
   <script>
-    // NAVBAR HAMBURGER
+    // Navbar Hamburger
     const navToggle = document.getElementById('nav-toggle');
     const nav = document.getElementById('mainnav');
+    const navLinks = document.getElementById('menu-links');
     navToggle.addEventListener('click', () => {
       nav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', nav.classList.contains('open'));
     });
     navToggle.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') nav.classList.toggle('open');
+      if (e.key === 'Enter') {
+        nav.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', nav.classList.contains('open'));
+      }
     });
-    // Fecha o menu ao clicar em um link (mobile)
     document.querySelectorAll('nav .nav-links a').forEach(link => {
       link.addEventListener('click', function() {
         nav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
       });
     });
-
-    // MENU ACTIVE
-    document.querySelectorAll('nav .nav-links a').forEach(link => {
+    // MENU ACTIVE + Scroll
+    const menuLinksArr = Array.from(document.querySelectorAll('nav .nav-links a'));
+    menuLinksArr.forEach(link => {
       link.addEventListener('click', function(e) {
         if (this.hash && document.querySelector(this.hash)) {
           e.preventDefault();
-          document.querySelectorAll('nav .nav-links a').forEach(a=>a.classList.remove('active'));
+          menuLinksArr.forEach(a=>a.classList.remove('active'));
           this.classList.add('active');
           document.querySelector(this.hash).scrollIntoView({ behavior: 'smooth' });
         }
       });
     });
-
-    // Scroll ativo para menu
     const sections = ["#inicio", "#skills", "#projetos", "#sobre", "#contato"];
     window.addEventListener('scroll', () => {
       let scrollY = window.scrollY;
@@ -816,18 +851,23 @@
       sections.forEach((id, idx) => {
         const sec = document.querySelector(id);
         if(sec && scrollY + 100 >= sec.offsetTop) {
-          document.querySelectorAll('nav .nav-links a').forEach(a=>a.classList.remove('active'));
-          document.querySelectorAll('nav .nav-links a')[idx].classList.add('active');
+          menuLinksArr.forEach(a=>a.classList.remove('active'));
+          menuLinksArr[idx].classList.add('active');
           found = true;
         }
       });
       if (!found) {
-        document.querySelectorAll('nav .nav-links a').forEach(a=>a.classList.remove('active'));
-        document.querySelectorAll('nav .nav-links a')[0].classList.add('active');
+        menuLinksArr.forEach(a=>a.classList.remove('active'));
+        menuLinksArr[0].classList.add('active');
       }
     });
-
-    // Partículas animadas (tsParticles)
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 40) {
+        document.querySelector('header').classList.add('scrolled');
+      } else {
+        document.querySelector('header').classList.remove('scrolled');
+      }
+    });
     tsParticles.load("tsparticles", {
       fullScreen: { enable: false },
       particles: {
@@ -862,11 +902,7 @@
       },
       detectRetina: true
     });
-
-    // Atualiza ano automaticamente
     document.getElementById('ano').textContent = new Date().getFullYear();
-
-    // GSAP animações de entrada
     window.addEventListener('DOMContentLoaded', () => {
       gsap.from(".hero h1", { y: 60, opacity: 0, duration: 1, ease: "power3.out" });
       gsap.from(".hero h2", { y: 30, opacity: 0, duration: 1, delay: 0.4, ease: "power3.out" });
@@ -874,18 +910,9 @@
       gsap.from(".hero p", { y: 30, opacity: 0, duration: 1, delay: 0.7, ease: "power3.out" });
       gsap.from(".socials a", { scale: 0, opacity: 0, stagger: 0.14, duration: 0.7, delay: 0.85, ease: "back.out(1.7)" });
       gsap.from(".about-content", { y: 120, opacity: 0, duration: 1, delay: 0.6 });
+      animateElements('.skill-card');
+      animateElements('.project-card');
     });
-
-    // Scroll header efeito glass
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 40) {
-        document.querySelector('header').classList.add('scrolled');
-      } else {
-        document.querySelector('header').classList.remove('scrolled');
-      }
-    });
-
-    // VanillaTilt nos cards de projeto
     VanillaTilt.init(document.querySelectorAll(".project-card"), {
       max: 16,
       speed: 600,
@@ -893,13 +920,10 @@
       "max-glare": 0.17,
       gyroscope: true
     });
-
-    // Ler mais dos projetos
     document.querySelectorAll('.project-desc').forEach(function(descEl) {
       const preview = descEl.querySelector('.desc-preview');
       const full = descEl.querySelector('.desc-full');
       const btn = descEl.querySelector('.ler-mais');
-      // Só mostrar botão se houver texto longo
       if (preview && full && btn) {
         full.style.display = 'none';
         btn.addEventListener('click', function(e) {
@@ -916,8 +940,6 @@
         });
       }
     });
-
-    // Animação dos cards ao aparecer
     function inViewport(el) {
       const rect = el.getBoundingClientRect();
       return (rect.top < window.innerHeight - 60);
@@ -932,10 +954,6 @@
       });
     }
     window.addEventListener('scroll', () => {
-      animateElements('.skill-card');
-      animateElements('.project-card');
-    });
-    window.addEventListener('DOMContentLoaded', () => {
       animateElements('.skill-card');
       animateElements('.project-card');
     });
